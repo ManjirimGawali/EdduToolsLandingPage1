@@ -17,10 +17,9 @@
 //   );
 // }
 
-
-
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const metadata = {
   title: "EddyTools Landing Templates",
@@ -35,11 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ThemeToggle />
           {children}
         </ThemeProvider>
       </body>
