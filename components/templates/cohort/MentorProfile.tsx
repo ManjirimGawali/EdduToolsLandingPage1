@@ -2,9 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { Linkedin, Calendar } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function MentorProfile() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface MentorProfileProps {
+  mentor: CohortData["mentor"];
+}
+export function MentorProfile({
+  mentor,
+}: MentorProfileProps) {
   return (
     <section className="relative py-16 sm:py-24 bg-white overflow-hidden">
       <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-slate-50 to-transparent rounded-full blur-3xl -z-10" />
@@ -30,8 +34,8 @@ export function MentorProfile() {
               whileHover={{ scale: 1.02 }}
             >
               <img
-                src={cohortData.mentor.image}
-                alt={cohortData.mentor.name}
+                src={mentor.image}
+                alt={mentor.name}
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.currentTarget.src =
@@ -63,10 +67,10 @@ export function MentorProfile() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-2">
-              {cohortData.mentor.name}
+              {mentor.name}
             </h2>
             <p className="text-xl text-blue-600 font-semibold mb-6">
-              {cohortData.mentor.title}
+              {mentor.title}
             </p>
 
             <motion.p
@@ -76,7 +80,7 @@ export function MentorProfile() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              {cohortData.mentor.bio}
+              {mentor.bio}
             </motion.p>
 
             {/* Key points */}
@@ -116,7 +120,7 @@ export function MentorProfile() {
               transition={{ delay: 0.4 }}
             >
               <a
-                href={cohortData.mentor.linkedin}
+                href={mentor.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"

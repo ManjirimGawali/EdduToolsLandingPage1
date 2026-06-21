@@ -1,6 +1,6 @@
 export const landingPageData = {
   hero: {
-    title: "Build Your Android & iOS App Using No-Code & AI",
+    title: " iOS App Using No-Code & AI",
     subtitle: "Turn your app idea into reality without writing code.",
     ctaText: "Book Your Spot",
     price: "₹199 + GST",

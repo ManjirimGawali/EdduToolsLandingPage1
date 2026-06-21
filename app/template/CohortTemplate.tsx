@@ -1,76 +1,77 @@
-import { HeroShowcase } from '@/components/templates/cohort/HeroShowcase';
-import { CountdownTimer } from '@/components/templates/cohort/CountdownTimer';
-import { TrustBar } from '@/components/templates/cohort/TrustBar';
-import { BuiltFor } from '@/components/templates/cohort/BuiltFor';
-import { Achievements } from '@/components/templates/cohort/Achievements';
-import { Audience } from '@/components/templates/cohort/Audience';
-import { Differentiators } from '@/components/templates/cohort/Differentiators';
-import { Curriculum } from '@/components/templates/cohort/Curriculum';
-import { WhatYouBuild } from '@/components/templates/cohort/WhatYouBuild';
-import { Results } from '@/components/templates/cohort/Results';
-import { WhyMatters } from '@/components/templates/cohort/WhyMatters';
-import { MentorProfile } from '@/components/templates/cohort/MentorProfile';
-import { MentorGallery } from '@/components/templates/cohort/MentorGallery';
-import { Testimonials } from '@/components/templates/cohort/Testimonials';
-import { FAQ } from '@/components/templates/cohort/FAQ';
-import { AfterApply } from '@/components/templates/cohort/AfterApply';
-import { FinalCTA } from '@/components/templates/cohort/FinalCTA';
-import { StickyCTABar } from '@/components/templates/cohort/StickyCTABar';
+import { CohortData } from "@/lib/data/cohort";
+interface CohortTemplateProps {
+  data: CohortData;
+}
+import { HeroShowcase } from "@/components/templates/cohort/HeroShowcase";
+import { CountdownTimer } from "@/components/templates/cohort/CountdownTimer";
+import { TrustBar } from "@/components/templates/cohort/TrustBar";
+import { BuiltFor } from "@/components/templates/cohort/BuiltFor";
+import { Achievements } from "@/components/templates/cohort/Achievements";
+import { Audience } from "@/components/templates/cohort/Audience";
+import { Differentiators } from "@/components/templates/cohort/Differentiators";
+import { Curriculum } from "@/components/templates/cohort/Curriculum";
+import { WhatYouBuild } from "@/components/templates/cohort/WhatYouBuild";
+import { Results } from "@/components/templates/cohort/Results";
+import { WhyMatters } from "@/components/templates/cohort/WhyMatters";
+import { MentorProfile } from "@/components/templates/cohort/MentorProfile";
+import { MentorGallery } from "@/components/templates/cohort/MentorGallery";
+import { Testimonials } from "@/components/templates/cohort/Testimonials";
+import { FAQ } from "@/components/templates/cohort/FAQ";
+import { AfterApply } from "@/components/templates/cohort/AfterApply";
+import { FinalCTA } from "@/components/templates/cohort/FinalCTA";
+import { StickyCTABar } from "@/components/templates/cohort/StickyCTABar";
 
-export default function Home() {
+export default function CohortTemplate({ data }: CohortTemplateProps) {
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Showcase */}
-      <HeroShowcase />
-
+      <HeroShowcase hero={data.hero} mentor={data.mentor} />
 
       {/* Trust Bar */}
       <TrustBar />
 
       {/* Built For */}
-      <BuiltFor />
+      <BuiltFor painPoints={data.painPoints} />
 
       {/* Achievements */}
-      <Achievements />
-
+      <Achievements achievements={data.achievements} />
       {/* Audience */}
-      <Audience />
+      <Audience audience={data.audience} />
 
       {/* Differentiators */}
-      <Differentiators />
+      <Differentiators differentiators={data.differentiators} />
 
       {/* Curriculum */}
-      <Curriculum />
+      <Curriculum modules={data.modules} />
 
       {/* What You Build */}
-      <WhatYouBuild />
+      <WhatYouBuild products={data.products} />
 
       {/* Results */}
-      <Results />
+      <Results results={data.results} />
 
       {/* Why Matters */}
-      <WhyMatters />
+      <WhyMatters whyMatters={data.whyMatters} />
 
       {/* Mentor Profile */}
-      <MentorProfile />
+      <MentorProfile mentor={data.mentor} />
 
-      {/* Mentor Gallery
-      <MentorGallery /> */}
+      {<MentorGallery mentor={data.mentor} />}
 
       {/* Testimonials */}
-      <Testimonials />
+      <Testimonials testimonials={data.testimonials} />
 
       {/* FAQ */}
-      <FAQ />
+      <FAQ faqs={data.faqs} />
 
       {/* After Apply */}
-      <AfterApply />
+      <AfterApply process={data.process} />
 
       {/* Final CTA */}
-      <FinalCTA />
+      <FinalCTA finalCTA={data.finalCTA} />
 
       {/* Sticky CTA Bar */}
-      <StickyCTABar />
+      <StickyCTABar offer={data.offer} hero={data.hero} />
     </main>
   );
 }

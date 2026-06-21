@@ -2,9 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function AfterApply() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface AfterApplyProps {
+  process: CohortData["process"];
+}
+export function AfterApply({
+  process,
+}: AfterApplyProps) {
   return (
     <section className="relative py-16 sm:py-24 bg-white overflow-hidden">
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-slate-50 to-transparent rounded-full blur-3xl -z-10" />
@@ -31,7 +35,7 @@ export function AfterApply() {
         >
           {/* Timeline */}
           <div className="space-y-8">
-            {cohortData.process.map((step, index) => (
+            {process.map((step, index) => (
               <motion.div
                 key={index}
                 className="relative flex gap-6"
@@ -49,7 +53,7 @@ export function AfterApply() {
                   >
                     {index + 1}
                   </motion.div>
-                  {index < cohortData.process.length - 1 && (
+                  {index < process.length - 1 && (
                     <motion.div
                       className="w-1 h-20 bg-gradient-to-b from-blue-400 to-transparent mt-2"
                       initial={{ scaleY: 0 }}

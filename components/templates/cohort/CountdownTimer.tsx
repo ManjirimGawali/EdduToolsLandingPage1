@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { cohortData } from '@/lib/data/cohort';
-
+import { CohortData } from '@/lib/data/cohort/types';
+interface CountdownTimerProps {
+  offer: CohortData["offer"];
+}
 interface TimeLeft {
   days: number;
   hours: number;
@@ -11,7 +13,9 @@ interface TimeLeft {
   seconds: number;
 }
 
-export function CountdownTimer() {
+export function CountdownTimer({
+  offer,
+}: CountdownTimerProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -21,7 +25,7 @@ export function CountdownTimer() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const expiryDate = new Date(cohortData.offer.expiryDate).getTime();
+      const expiryDate = new Date(offer.expiryDate).getTime();
       const now = new Date().getTime();
       const difference = expiryDate - now;
 

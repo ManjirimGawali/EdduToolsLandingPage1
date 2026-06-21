@@ -2,9 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { Package } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function WhatYouBuild() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface WhatYouBuildProps {
+  products: CohortData["products"];
+}
+export function WhatYouBuild({
+  products,
+}: WhatYouBuildProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -52,7 +56,7 @@ export function WhatYouBuild() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {cohortData.products.map((product, index) => (
+          {products.map((product, index) => (
             <motion.div
               key={index}
               className="group relative"

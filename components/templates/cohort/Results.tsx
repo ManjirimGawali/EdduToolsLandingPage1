@@ -2,9 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { TrendingUp } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function Results() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface ResultsProps {
+  results: CohortData["results"];
+}
+export function Results({
+  results,
+}: ResultsProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -52,7 +56,7 @@ export function Results() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {cohortData.results.map((result, index) => (
+          {results.map((result, index) => (
             <motion.div
               key={index}
               className="group relative"

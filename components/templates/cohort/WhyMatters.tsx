@@ -2,9 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { Lightbulb } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function WhyMatters() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface WhyMattersProps {
+  whyMatters: CohortData["whyMatters"];
+}
+export function WhyMatters({
+  whyMatters,
+}: WhyMattersProps) {
   return (
     <section className="relative py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-100/40 to-transparent rounded-full blur-3xl -z-10" />
@@ -47,7 +51,7 @@ export function WhyMatters() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                {cohortData.whyMatters}
+                {whyMatters}
               </motion.p>
 
               <motion.div

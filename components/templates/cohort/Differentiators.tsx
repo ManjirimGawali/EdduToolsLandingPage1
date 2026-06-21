@@ -1,9 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { cohortData } from '@/lib/data/cohort';
-
-export function Differentiators() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface DifferentiatorsProps {
+  differentiators: CohortData["differentiators"];
+}
+export function Differentiators({
+  differentiators,
+}: DifferentiatorsProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -51,7 +55,7 @@ export function Differentiators() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {cohortData.differentiators.map((item, index) => (
+          {differentiators.map((item, index) => (
             <motion.div
               key={index}
               className="relative group"
@@ -79,7 +83,7 @@ export function Differentiators() {
               </motion.div>
 
               {/* Timeline line */}
-              {index < cohortData.differentiators.length - 1 && (
+              {index < differentiators.length - 1 && (
                 <motion.div
                   className="absolute left-6 top-full w-0.5 h-4 bg-gradient-to-b from-blue-400 to-transparent"
                   initial={{ scaleY: 0 }}

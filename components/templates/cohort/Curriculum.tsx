@@ -3,9 +3,13 @@
 import { motion } from 'framer-motion';
 import { ChevronDown, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function Curriculum() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface CurriculumProps {
+  modules: CohortData["modules"];
+}
+export function Curriculum({
+  modules,
+}: CurriculumProps) {
   const [expandedModule, setExpandedModule] = useState(0);
 
   return (
@@ -34,7 +38,7 @@ export function Curriculum() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          {cohortData.modules.map((module, moduleIndex) => (
+          {modules.map((module, moduleIndex) => (
             <motion.div
               key={moduleIndex}
               className="border border-gray-200 rounded-2xl overflow-hidden hover:border-blue-400 hover:shadow-lg transition-all duration-300 bg-white"

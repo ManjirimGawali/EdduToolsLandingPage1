@@ -3,9 +3,15 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Rocket, Clock } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function StickyCTABar() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface StickyCTABarProps {
+  offer: CohortData["offer"];
+  hero: CohortData["hero"];
+}
+export function StickyCTABar({
+  offer,
+  hero,
+}: StickyCTABarProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [timeLeft, setTimeLeft] = useState<{
     hours: number;
@@ -26,7 +32,7 @@ export function StickyCTABar() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const expiryDate = new Date(cohortData.offer.expiryDate).getTime();
+      const expiryDate = new Date(offer.expiryDate).getTime();
       const now = new Date().getTime();
       const difference = expiryDate - now;
 
@@ -42,7 +48,7 @@ export function StickyCTABar() {
     const timer = setInterval(calculateTimeLeft, 60000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [offer.expiryDate]);
 
   return (
     <motion.div

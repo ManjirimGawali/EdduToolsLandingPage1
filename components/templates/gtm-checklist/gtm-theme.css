@@ -1,0 +1,50 @@
+:root {
+  --gtm-bg: #050505;
+
+  --gtm-heading: #f5f5f5;
+  --gtm-text: #a1a1aa;
+  --gtm-muted: #71717a;
+
+  --gtm-primary: #60a5fa;
+
+  --gtm-card: rgba(255,255,255,0.03);
+  --gtm-border: rgba(255,255,255,0.08);
+}
+
+.gtm-page {
+  background-color: var(--gtm-bg);
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+
+  min-height: 100vh;
+}
+
+.gtm-heading {
+  color: var(--gtm-heading);
+}
+
+.gtm-text {
+  color: var(--gtm-text);
+}
+
+.gtm-card {
+  background: var(--gtm-card);
+  border: 1px solid var(--gtm-border);
+  backdrop-filter: blur(20px);
+}
+
+.gtm-button {
+  background: var(--gtm-primary);
+  color: white;
+}

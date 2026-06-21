@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Rocket } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
+import type { CohortData } from '@/lib/data/cohort';
+interface HeroShowcaseProps {
+  hero: CohortData["hero"];
+  mentor: CohortData["mentor"];
+}
 const floatingBadges = [
   'AI SaaS',
   'GTM',
@@ -13,7 +16,9 @@ const floatingBadges = [
   'Global Market',
 ];
 
-export function HeroShowcase() {
+export function HeroShowcase({
+  hero,mentor,
+}:HeroShowcaseProps) {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Premium animated background blobs */}
@@ -68,9 +73,9 @@ export function HeroShowcase() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            Build AI SaaS
+              {hero.mainHeadline}
             <br />
-            <motion.span 
+             <motion.span 
               className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent inline-block"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -79,7 +84,7 @@ export function HeroShowcase() {
               Products That Generate Revenue
             </motion.span>
             <br />
-            Get Paid In Dollars.
+            {/* Get Paid In Dollars. */ }
           </motion.h1>
 
           <motion.p
@@ -88,7 +93,7 @@ export function HeroShowcase() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {cohortData.hero.subheadline}
+            {hero.subheadline}
           </motion.p>
         </motion.div>
 
@@ -132,8 +137,8 @@ export function HeroShowcase() {
         >
           <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/40 backdrop-blur">
             <motion.img
-              src={cohortData.mentor.image}
-              alt={cohortData.mentor.name}
+              src={mentor.image}
+              alt={mentor.name}
               className="w-full h-full object-cover"
               whileHover={{ scale: 1.08 }}
               transition={{ duration: 0.6 }}
@@ -152,8 +157,8 @@ export function HeroShowcase() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <p className="font-bold text-gray-900">{cohortData.mentor.name}</p>
-            <p className="text-sm text-gray-600">{cohortData.mentor.title}</p>
+            <p className="font-bold text-gray-900">{mentor.name}</p>
+            <p className="text-sm text-gray-600">{mentor.title}</p>
           </motion.div>
         </motion.div>
 
@@ -165,11 +170,11 @@ export function HeroShowcase() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-600/30 transition-all duration-300 flex items-center gap-2 group hover:scale-105 active:scale-95">
-            {cohortData.hero.cta1}
+            {hero.cta1}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
           <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:bg-gray-50 hover:shadow-md transition-all duration-300 hover:scale-105 active:scale-95">
-            {cohortData.hero.cta2}
+            {hero.cta2}
           </button>
         </motion.div>
 
@@ -180,7 +185,7 @@ export function HeroShowcase() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          {cohortData.hero.limitation}
+          {hero.limitation}
         </motion.p>
 
         {/* Limited seats badge with animation */}

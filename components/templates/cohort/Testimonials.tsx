@@ -3,21 +3,25 @@
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function Testimonials() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface TestimonialsProps {
+  testimonials: CohortData["testimonials"];
+}
+export function Testimonials({
+  testimonials,
+}: TestimonialsProps) {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setDirection(1);
-      setCurrent((prev) => (prev + 1) % cohortData.testimonials.length);
+      setCurrent((prev) => (prev + 1) % testimonials.length);
     }, 6000);
     return () => clearInterval(interval);
   }, []);
 
-  const testimonial = cohortData.testimonials[current];
+  const testimonial = testimonials[current];
 
   const slideVariants = {
     enter: (dir: number) => ({
@@ -118,7 +122,7 @@ export function Testimonials() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            {cohortData.testimonials.map((_, index) => (
+            {testimonials.map((_, index) => (
               <motion.button
                 key={index}
                 onClick={() => {

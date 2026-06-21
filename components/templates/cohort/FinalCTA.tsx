@@ -2,9 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function FinalCTA() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface FinalCTAProps {
+  finalCTA: CohortData["finalCTA"];
+}
+export function FinalCTA({
+  finalCTA,
+}: FinalCTAProps) {
   return (
     <section className="relative py-16 sm:py-24 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
       {/* Background accents */}
@@ -33,7 +37,7 @@ export function FinalCTA() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            {cohortData.finalCTA.headline}
+            {finalCTA.headline}
           </motion.h2>
 
           <motion.div
@@ -44,10 +48,10 @@ export function FinalCTA() {
             transition={{ delay: 0.2 }}
           >
             <p className="text-xl text-blue-100">
-              {cohortData.finalCTA.description1}
+              {finalCTA.description1}
             </p>
             <p className="text-xl text-blue-100">
-              {cohortData.finalCTA.description2}
+              {finalCTA.description2}
             </p>
           </motion.div>
 
@@ -60,7 +64,7 @@ export function FinalCTA() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            {cohortData.finalCTA.cta}
+            {finalCTA.cta}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </motion.button>
 
@@ -71,7 +75,7 @@ export function FinalCTA() {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            {cohortData.finalCTA.footer}
+            {finalCTA.footer}
           </motion.p>
         </motion.div>
       </div>

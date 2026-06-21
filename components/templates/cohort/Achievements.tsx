@@ -2,9 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function Achievements() {
+import type { Achievement } from '@/lib/data/cohort/types';
+interface AchievementsProps {
+  achievements: Achievement[];
+}
+export function Achievements({
+  achievements,
+}: AchievementsProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -52,7 +56,7 @@ export function Achievements() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {cohortData.achievements.map((achievement, index) => (
+          {achievements.map((achievement, index) => (
             <motion.div
               key={index}
               className="group relative bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-300 transition-colors"

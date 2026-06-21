@@ -3,9 +3,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function MentorGallery() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface MentorGalleryProps {
+  mentor: CohortData["mentor"];
+}
+export function MentorGallery({
+  mentor,
+}: MentorGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const containerVariants = {
@@ -55,7 +59,7 @@ export function MentorGallery() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {cohortData.mentor.gallery.map((image, index) => (
+          {mentor.gallery.map((image, index) => (
             <motion.div
               key={index}
               className="group relative aspect-square overflow-hidden rounded-xl cursor-pointer"
@@ -93,7 +97,7 @@ export function MentorGallery() {
         initial={{ opacity: 0 }}
         animate={{ opacity: selectedImage ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        pointerEvents={selectedImage ? 'auto' : 'none'}
+        style={{ pointerEvents: selectedImage ? 'auto' : 'none' }}
         onClick={() => setSelectedImage(null)}
       >
         <motion.div

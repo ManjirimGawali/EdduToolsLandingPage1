@@ -2,9 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { Users } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
+import { CohortData } from '@/lib/data/cohort/types';
+interface AudienceProps {
+  audience: CohortData["audience"];
+}
 
-export function Audience() {
+export function Audience({
+  audience,
+}: AudienceProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -49,7 +54,7 @@ export function Audience() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {cohortData.audience.map((item, index) => (
+          {audience.map((item, index) => (
             <motion.div
               key={index}
               className="relative group"

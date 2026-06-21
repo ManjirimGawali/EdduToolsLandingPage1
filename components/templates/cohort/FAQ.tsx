@@ -3,9 +3,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function FAQ() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface FAQProps {
+  faqs: CohortData["faqs"];
+}
+export function FAQ({
+  faqs,
+}: FAQProps) {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
   const containerVariants = {
@@ -73,7 +77,7 @@ export function FAQ() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {cohortData.faqs.map((faq, index) => (
+          {faqs.map((faq, index) => (
             <motion.div
               key={index}
               variants={itemVariants}

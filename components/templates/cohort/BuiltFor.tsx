@@ -2,9 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { X, ArrowRight } from 'lucide-react';
-import { cohortData } from '@/lib/data/cohort';
-
-export function BuiltFor() {
+import { CohortData } from '@/lib/data/cohort/types';
+interface BuiltForProps {
+  painPoints: CohortData["painPoints"];
+}
+export function BuiltFor({
+  painPoints,
+}: BuiltForProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -75,7 +79,7 @@ export function BuiltFor() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {cohortData.painPoints.map((point, index) => (
+              {painPoints.map((point, index) => (
                 <motion.li
                   key={index}
                   className="flex items-start gap-3 text-gray-700"
