@@ -4,20 +4,19 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { MENTOR } from "@/lib/data/cohortnew/ai_saas";
+import type { CohortData } from "@/lib/data/cohortnew/index";
 
-export function MentorGallery() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+interface MentorGalleryProps {
+  mentor: CohortData["mentor"];
+}
+export function MentorGallery({
+  mentor,
+}: MentorGalleryProps) {
+  
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % MENTOR.gallery.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? MENTOR.gallery.length - 1 : prev - 1
-    );
-  };
+  const achievements: string[] = Array.isArray((mentor as any).achievements)
+    ? ((mentor as any).achievements as string[])
+    : [];
 
   return (
     <section className="relative py-16 px-4 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
@@ -33,73 +32,28 @@ export function MentorGallery() {
             Meet Your <span className="bg-gradient-to-r from-blue-400 via-green-400 to-orange-400 bg-clip-text text-transparent">Mentor</span>
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
-            {MENTOR.name} brings years of experience in AI SaaS product building and global distribution.
+            {mentor.name} brings years of experience in AI SaaS product building and global distribution.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Gallery */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative flex justify-center"
-          >
-            <div className="relative rounded-3xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-slate-800 to-slate-900 w-80 h-96 shadow-xl">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={MENTOR.gallery[currentIndex]}
-                    alt={`${MENTOR.name} ${currentIndex + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Navigation Buttons */}
-              <button
-                onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-green-600/40 backdrop-blur-md rounded-full hover:bg-green-600/60 transition-all z-10 shadow-lg"
-              >
-                <ChevronLeft className="w-6 h-6 text-white" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-green-600/40 backdrop-blur-md rounded-full hover:bg-green-600/60 transition-all z-10 shadow-lg"
-              >
-                <ChevronRight className="w-6 h-6 text-white" />
-              </button>
-
-              {/* Dots Indicator */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                {MENTOR.gallery.map((_, idx) => (
-                  <motion.button
-                    key={idx}
-                    onClick={() => setCurrentIndex(idx)}
-                    className={`h-2 rounded-full transition-all ${
-                      idx === currentIndex
-                        ? "bg-gradient-to-r from-green-400 to-orange-400 w-8"
-                        : "bg-white/30 w-2"
-                    }`}
-                    whileHover={{ scale: 1.2 }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Image Counter */}
-            <div className="mt-4 text-center text-white/70">
-              <p className="text-sm">{currentIndex + 1} of {MENTOR.gallery.length}</p>
-            </div>
-          </motion.div>
+         {/* Mentor Image */}
+<motion.div
+  initial={{ opacity: 0, x: -40 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  className="flex justify-center"
+>
+  <div className="relative rounded-3xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-slate-800 to-slate-900 w-80 h-96 shadow-xl">
+    <Image
+      src={mentor.image}
+      alt={mentor.name}
+      fill
+      className="object-cover"
+    />
+  </div>
+</motion.div>
 
           {/* Info Section */}
           <motion.div
@@ -110,20 +64,20 @@ export function MentorGallery() {
           >
             <div>
               <h3 className="text-3xl font-bold text-white mb-2">
-                {MENTOR.name}
+                {mentor.name}
               </h3>
               <p className="text-cyan-400 text-lg font-semibold">
-                {MENTOR.title}
+                {mentor.title}
               </p>
             </div>
 
             <p className="text-white/80 text-lg leading-relaxed">
-              {MENTOR.bio}
+              {mentor.bio}
             </p>
 
-            {/* Stats Grid */}
+            {/* Stats Grid
             <div className="grid grid-cols-2 gap-4 pt-4">
-              {MENTOR.stats.map((stat, idx) => {
+              {mentor.stats.map((stat, idx) => {
                 const IconComponent = stat.icon;
                 return (
                   <motion.div
@@ -142,26 +96,29 @@ export function MentorGallery() {
                 );
               })}
             </div>
+            */}
 
             {/* Achievements */}
-            <div className="pt-4">
-              <h4 className="text-white font-bold mb-4">Key Achievements:</h4>
-              <ul className="space-y-2">
-                {MENTOR.achievements.slice(0, 4).map((achievement, idx) => (
-                  <motion.li
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex items-center gap-3 text-white/80"
-                  >
-                    <span className="w-2 h-2 bg-gradient-to-r from-green-400 to-orange-400 rounded-full" />
-                    {achievement}
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+            {achievements.length > 0 && (
+              <div className="pt-4">
+                <h4 className="text-white font-bold mb-4">Key Achievements:</h4>
+                <ul className="space-y-2">
+                  {achievements.slice(0, 4).map((achievement, idx) => (
+                    <motion.li
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="flex items-center gap-3 text-white/80"
+                    >
+                      <span className="w-2 h-2 bg-gradient-to-r from-green-400 to-orange-400 rounded-full" />
+                      {achievement}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

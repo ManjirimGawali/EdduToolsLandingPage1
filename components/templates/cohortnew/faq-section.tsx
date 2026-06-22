@@ -1,11 +1,15 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { FAQ_ITEMS } from "@/lib/data/cohortnew/ai_saas";
+import type { CohortData } from "@/lib/data/cohortnew/index";
+
+interface FAQSectionProps {
+  faqs: CohortData["faqs"];
+}
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-export function FAQSection() {
+export function FAQSection({ faqs }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const containerVariants = {
@@ -55,7 +59,7 @@ export function FAQSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-4"
         >
-          {FAQ_ITEMS.map((item, idx) => (
+          {faqs.map((item, idx) => (
             <motion.div key={idx} variants={itemVariants}>
               <button
                 onClick={() =>

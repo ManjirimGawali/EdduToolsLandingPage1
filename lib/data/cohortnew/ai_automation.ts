@@ -1,16 +1,17 @@
 import { CohortData } from "./types";
-export const aiSaasData: CohortData = {
-  slug: "ai_saas",
+
+export const aiAutomationData: CohortData = {
+  slug: "ai_automation",
   hero: {
-    mainHeadline: "Build AI SaaS Products. Launch Globally. Get Paid In Dollars.",
+    mainHeadline: "Build AI Automation System. Launch Globally. Get Paid In Dollars.",
     subheadline: "While Working From India",
     description:
-      "Join a hands-on AI SaaS Cohort where you build a real product, launch it with GTM systems, and learn how to earn in global markets.",
-    sessionInfo: "Live Cohort Sessions Every Sunday — 11 AM",
+      "Join a hands-on AI Automation Cohort where you build a real product, launch it with GTM systems, and learn how to earn in global markets.",
+    sessionInfo: "Live Cohort Sessions Every Friday — 7 PM",
     tagline: "Build With Mentors. Ship Fast. Learn Real Distribution.",
     cta1: "Apply Now",
     cta2: "Watch Overview",
-    limitation: "Launch your first AI SaaS in 60–90 days",
+    limitation: "Launch your first AI Automation System in 60–90 days",
   },
   offer: {
     expiryDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
@@ -18,9 +19,9 @@ export const aiSaasData: CohortData = {
     seatsLimited: 25,
   },
   mentor: {
-    name: "Ashish Namdeo",
+    name: "Manjiri",
     title: "AI SaaS Builder & GTM Strategist",
-    image: "/ashish-namdeo.png",
+    image: "/teachingprofessional.png",
     gallery: [
       "/mentor-speaking.jpg",
       "/mentor-teaching.jpg",

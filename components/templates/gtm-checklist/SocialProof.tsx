@@ -68,7 +68,7 @@ export default function SocialProof({ data }: SocialProofProps) {
               {[...data.partnerLogos, ...data.partnerLogos].map((logo, i) => (
                 <div
                   key={i}
-                  className="inline-flex h-8 w-40 shrink-0 items-center justify-center opacity-30 grayscale transition-all hover:opacity-60 hover:grayscale-0"
+                  className="inline-flex h-8 w-40 shrink-0 items-center justify-center opacity-100 transition-all hover:scale-105"
                 >
                   <Image
                     src={logo}

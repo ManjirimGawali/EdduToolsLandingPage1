@@ -1,5 +1,7 @@
-import NewCohort from "../template/NewCohort";
+import { redirect } from "next/navigation";
 
-export default function Page() {
-  return <NewCohort/>;
+import { newcohortPages } from "@/lib/data/cohortnew/index";
+
+export default function CohortIndexPage() {
+  redirect(`/newCohort/${newcohortPages[0]?.slug ?? ""}`);
 }

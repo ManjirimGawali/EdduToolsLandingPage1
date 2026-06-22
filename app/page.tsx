@@ -1,13 +1,24 @@
 import Link from "next/link";
 import { ArrowRight, LayoutTemplate } from "lucide-react";
 import { cohortPages } from "@/lib/data/cohort";
+import { newcohortPages } from "../lib/data/cohortnew/index";
 import { gtmPages } from "@/lib/data/gtm-checklist";
 
 const templates = [
   {
-    title: "Cohort Template",
+    title: "Cohort Template 1",
     description: "Landing page for cohort-based programs and courses.",
     href: `/cohort/${cohortPages[0]?.slug ?? ""}`,
+  },
+  {
+    title: "Cohort Template 2",
+    description: "Landing page for cohort-based programs and courses.",
+    href: `/newCohort/${newcohortPages[0]?.slug ?? ""}`,
+  },
+   {
+    title: "GTM Checklist",
+    description: "Go-to-market checklist landing page template.",
+    href: `/gtm_checklist/${gtmPages[0]?.slug ?? ""}`,
   },
   {
     title: "Webinar Template",
@@ -19,11 +30,7 @@ const templates = [
     description: "Template focused on remote job and career webinars.",
     href: "/remotejobwebinar",
   },
-  {
-    title: "GTM Checklist",
-    description: "Go-to-market checklist landing page template.",
-    href: `/gtm_checklist/${gtmPages[0]?.slug ?? ""}`,
-  },
+ 
 ];
 
 export default function HomePage() {

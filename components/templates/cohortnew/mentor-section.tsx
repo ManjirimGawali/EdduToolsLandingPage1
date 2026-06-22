@@ -1,10 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MENTOR } from "@/lib/data/cohortnew/ai_saas";
 import { ChevronRight } from "lucide-react";
+import type { CohortData } from "@/lib/data/cohortnew/index";
 
-export function MentorSection() {
+interface MentorSectionProps {
+  mentor: CohortData["mentor"];
+}
+
+export function MentorSection({
+  mentor,
+}: MentorSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -24,6 +30,8 @@ export function MentorSection() {
       transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any },
     },
   };
+
+  const ctaText = (mentor as any)?.cta?.text || "Learn More";
 
   return (
     <section className="relative py-20 md:py-32 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
@@ -55,12 +63,12 @@ export function MentorSection() {
           <motion.div variants={itemVariants} className="space-y-6">
             {/* Name and Title */}
             <div>
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
-                {MENTOR.name}
+                <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
+                {mentor?.name}
               </h3>
               {/* Use a safe lookup for designation to avoid TS errors if property name differs */}
               {(() => {
-                const designation = (MENTOR as any).designation || (MENTOR as any).title || (MENTOR as any).role || "";
+                const designation = (mentor as any)?.designation || (mentor as any)?.title || (mentor as any)?.role || "";
                 return (
                   <p className="text-lg text-green-400 font-semibold">{designation}</p>
                 );
@@ -69,7 +77,7 @@ export function MentorSection() {
 
             {/* Headline */}
             {(() => {
-              const headline = (MENTOR as any).headline || (MENTOR as any).tagline || (MENTOR as any).summary || "";
+              const headline = (mentor as any)?.headline || (mentor as any)?.tagline || (mentor as any)?.summary || "";
               return (
                 <p className="text-2xl md:text-3xl font-bold text-white leading-tight">{headline}</p>
               );
@@ -77,7 +85,7 @@ export function MentorSection() {
 
             {/* About */}
             <div className="space-y-4">
-              {((MENTOR as any).about || []).map((paragraph: any, idx: number) => (
+              {((mentor as any)?.about || []).map((paragraph: any, idx: number) => (
                 <p
                   key={idx}
                   className="text-white/80 text-base md:text-lg leading-relaxed"
@@ -92,7 +100,7 @@ export function MentorSection() {
               variants={containerVariants}
               className="grid grid-cols-2 gap-4 py-8"
             >
-              {MENTOR.stats.map((stat, idx) => {
+              {(((mentor as any)?.stats || []) as any[]).map((stat: any, idx: number) => {
                 const IconComponent = stat.icon;
                 return (
                   <motion.div
@@ -102,9 +110,9 @@ export function MentorSection() {
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <IconComponent className="w-5 h-5 text-green-400" />
-                      <p className="text-2xl font-bold text-white">
+                      {/* <p className="text-2xl font-bold text-white">
                         {stat.value}
-                      </p>
+                      </p> */}
                     </div>
                     <p className="text-white/60 text-sm">{stat.label}</p>
                   </motion.div>
@@ -118,7 +126,7 @@ export function MentorSection() {
                 Worked with leading brands
               </p>
               <div className="flex flex-wrap gap-3">
-                {((MENTOR as any).brands || []).map((brand: any, idx: number) => (
+                {((mentor as any)?.brands || []).map((brand: any, idx: number) => (
                   <span
                     key={idx}
                     className="px-4 py-2 bg-white/5 border border-white/20 rounded-lg text-white/70 text-sm hover:bg-white/10 hover:border-green-500/50 transition-all duration-300"
@@ -132,10 +140,10 @@ export function MentorSection() {
             {/* CTA */}
             <motion.div variants={itemVariants} className="pt-4">
               <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50">
-                <span className="relative flex items-center justify-center gap-2">
-                  {MENTOR.cta.text}
+                {/* <span className="relative flex items-center justify-center gap-2">
+                  {mentor?.cta?.text}
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
+                </span> */}
               </button>
             </motion.div>
           </motion.div>
@@ -163,8 +171,8 @@ export function MentorSection() {
                 <div className="text-5xl mb-4">🏆</div>
                 <div className="flex items-start gap-3">
                   <div>
-                    {(() => {
-                      const achievement = (MENTOR as any).achievement || (MENTOR as any).achievements?.[0] || { title: "", description: "" };
+                      {(() => {
+                      const achievement = (mentor as any)?.achievement || (mentor as any)?.achievements?.[0] || { title: "", description: "" };
                       return (
                         <>
                           <h4 className="text-2xl md:text-3xl font-bold text-white mb-2">

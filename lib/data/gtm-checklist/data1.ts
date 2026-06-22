@@ -12,12 +12,12 @@ export const gtmChecklistData: GTMChecklistData = {
     availableLabel: "Available for",
     socialProofCount: "9500+",
     socialProofLabel: "business owners trust this checklist",
-    image: "/images/hero-product.png",
+    image: "/gtm.png",
     avatars: [
-      "/images/avatar-1.webp",
-      "/images/avatar-2.webp",
-      "/images/avatar-3.webp",
-      "/images/avatar-4.webp",
+      "/avatar1.png",
+      "/avatar2.png",
+     "/avatar3.png",
+      "/avatar4.png",
     ],
   },
 
@@ -26,21 +26,23 @@ export const gtmChecklistData: GTMChecklistData = {
     label: "My checklist has helped more than 9500 business owners plan & execute their GTM strategy.",
     stars: 5,
     avatars: [
-      "/images/avatar-1.webp",
-      "/images/avatar-2.webp",
-      "/images/avatar-3.webp",
-      "/images/avatar-4.webp",
+      "/avatar1.png",
+      "/avatar2.png",
+     "/avatar3.png",
+      "/avatar4.png",
     ],
     partnerLogos: [
-      "/images/logos-row-1.png",
-      "/images/logos-row-2.png",
+      "/notion2.png",
+      "/figma2.png",
+      "/airtable2.png",
+      "/logo-eddytools.png"
     ],
     partnerLabel: "Battle-tested strategies on companies like:",
   },
 
   author: {
     name: "Maja Voje",
-    image: "/images/maja-voje.png",
+    image: "/teachingprofessional.png",
     bio: "I spent 11 years as a growth strategist for companies like Google, Rocket Internet, Bayer, and Heineken, along with more than 750 startups. I've seen countless founders get trapped in endless cycles of overthinking, spending months analyzing theories rather than making progress, and using outdated Silicon Valley strategies that worked 10 years ago. That's why I developed a practical, no-nonsense 100-step Go-To-Market checklist designed to keep you focused, help you achieve product-market fit faster, and scale your business efficiently without getting stuck in analysis paralysis.",
     pains: [
       { emoji: "🤯", text: "Nerve-wracking and delayed launches" },
@@ -82,7 +84,7 @@ export const gtmChecklistData: GTMChecklistData = {
         title: "100+ GTM Checkpoints — Launch Preparations to Scaling",
         description:
           "This is an all-in-one blueprint that supports you through your entire lifecycle of the product with proven frameworks, examples, blueprints and workshops. It becomes your Standard Operating Procedure (SOP) for go-to-market strategy for all your product launches.",
-        image: "/images/feature-checklist.png",
+        image: "/gtm.png",
         stat: "100+",
         statLabel: "Checkpoints",
       },
@@ -90,7 +92,7 @@ export const gtmChecklistData: GTMChecklistData = {
         title: "84 AI prompts will cut your implementation time by more than 80%",
         description:
           "Instead of staring at blank templates and scratching your head about what to write and how to do things — AI will get you unstuck in seconds.",
-        image: "/images/feature-ai.png",
+        image: "/promptslarge.png",
         stat: "84",
         statLabel: "AI Prompts",
       },
@@ -98,15 +100,15 @@ export const gtmChecklistData: GTMChecklistData = {
         title: "Not just WHAT but HOW",
         description:
           "You know what to do. I will show you HOW to do it and provide proven assets to get you started. In the checklist, you will find assets that others charge for extra: a list of interview questions, the structure of your LinkedIn profile, landing pages, sales decks, positioning and messaging exercises, and pricing workshops — all-in-one for a single investment.",
-        image: "/images/feature-how.png",
+        image: "/gtmhow.png",
       },
     ],
     aiModels: [
-      { name: "DeepSeek", icon: "/images/ai-deepseek.png" },
-      { name: "Claude", icon: "/images/ai-claude.png" },
-      { name: "ChatGPT", icon: "/images/ai-chatgpt.png" },
-      { name: "Gemini", icon: "/images/ai-gemini.png" },
-      { name: "Llama", icon: "/images/ai-llama.png" },
+      { name: "DeepSeek", icon: "/deepseek.png" },
+      { name: "Claude", icon: "/claude.png" },
+      { name: "ChatGPT", icon: "/chatgpt.png" },
+      { name: "Gemini", icon: "/gemini.png" },
+      { name: "Llama", icon: "/llama.png" },
     ],
     aiLabel: "Tested to work with all mainstream AI models.",
     ctaText: "Get Your GTM Checklist Now",
@@ -121,7 +123,7 @@ export const gtmChecklistData: GTMChecklistData = {
         title: "12 Stages & 100+ Actionable Steps",
         description:
           "This checklist covers every step of your go-to-market strategy — from validating the assumptions, to reaching your go-to-market fit (find at least one predictable and scalable way to get customers). It gives you a clear system to find your \"shut up and take my money\" clients, frameworks to craft irresistible offers and positioning that makes them buy, and blueprints for landing pages, LinkedIn posts, viral campaigns, and other marketing assets.",
-        image: "/images/included-steps.png",
+        image: "/12stages.png",
         stat: "100",
         statUnit: "Steps",
       },
@@ -129,7 +131,7 @@ export const gtmChecklistData: GTMChecklistData = {
         title: "20+ Workshops",
         description:
           "My best-selling workshops are presented on a single Miro board. Included: ICP, Positioning, Pricing, Growth, Value proposition, Branding, GTM Motions, Growth workshop, GTM sprints…",
-        image: "/images/included-workshops.png",
+        image: "/workshop.png",
         stat: "20",
         statUnit: "Workshops",
       },
@@ -137,7 +139,7 @@ export const gtmChecklistData: GTMChecklistData = {
         title: "60+ Best practices",
         description:
           "Learn from companies and professionals that have rocked their GTM — get their onboarding emails, LinkedIn posts, website examples, selling scripts, sales decks, and much more.",
-        image: "/images/included-bestpractices.png",
+        image: "/bestpractices.png",
         stat: "60",
         statUnit: "Best Practices",
       },
@@ -145,7 +147,7 @@ export const gtmChecklistData: GTMChecklistData = {
         title: "30+ Templates",
         description:
           "Trusted spreadsheets, documents, designs, canvases, launch checklists and other docs that you can use to quick-start your go-to-market mission.",
-        image: "/images/included-templates.png",
+        image: "/templates.png",
         stat: "30",
         statUnit: "Templates",
       },
@@ -153,7 +155,7 @@ export const gtmChecklistData: GTMChecklistData = {
         title: "80+ AI prompts",
         description:
           "Wherever it made sense, I added a prompt that helps you get what you need to do in a fraction of the time. All prompts have been tested to work in all mainstream AI models.",
-        image: "/images/included-prompts.png",
+        image: "/promptssmall.png",
         stat: "80",
         statUnit: "AI Prompts",
       },
@@ -166,13 +168,13 @@ export const gtmChecklistData: GTMChecklistData = {
     sectionTitle: "Works however and wherever you want it",
     description:
       "Switch between views to get the most out of it: order tasks by progress (Kanban view), priority, expected duration, or category. Notion will automatically calculate your progress. You can also export CSV version to any other project management tool — it works where you work. No need to buy any extra software.",
-    image: "/images/workflow-notion.webp",
+    image: "/workflow2.png",
     tools: [
-      { name: "Notion", icon: "/images/tool-notion.png" },
-      { name: "Asana", icon: "/images/tool-asana.png" },
-      { name: "Jira", icon: "/images/tool-jira.png" },
-      { name: "monday", icon: "/images/tool-monday.png" },
-      { name: "Airtable", icon: "/images/tool-airtable.png" },
+      { name: "Notion", icon: "/notion2.png" },
+      { name: "Asana", icon: "/asana.png" },
+      { name: "Jira", icon: "/jira.png" },
+      { name: "monday", icon: "/monday.png" },
+      { name: "Airtable", icon: "/airtable2.png" },
     ],
     note: "it works where you work.",
   },
@@ -186,7 +188,7 @@ export const gtmChecklistData: GTMChecklistData = {
         company: "",
         handle: "@nicotrofim",
         platform: "via LinkedIn",
-        avatar: "/images/testimonial-nico.webp",
+        avatar: "/avatar1.png",
         featured: true,
         content:
           "Your GTM checklist is a fantastic companion for anyone who needs to be guided by a friend through the ins and outs of GTM. What sets your checklist apart is: 1. how you combined growth marketing elements with product marketing and 2. how you enlisted so many specialists so together you could create this step-by-step checklist.",
@@ -197,7 +199,7 @@ export const gtmChecklistData: GTMChecklistData = {
         company: "GrowthHit",
         handle: "",
         platform: "",
-        avatar: "/images/testimonial-jim.webp",
+        avatar: "/avatar2.png",
         content:
           "Maja has done it again! This list is a game-changer for growth marketers, offering a comprehensive, actionable guide covering every aspect of a go-to-market strategy. It is invaluable for both seasoned marketers and newcomers, making it an indispensable tool for refining go-to-market efforts and achieving success. Highly recommended!",
       },
@@ -207,7 +209,7 @@ export const gtmChecklistData: GTMChecklistData = {
         company: "Product Hackers",
         handle: "",
         platform: "",
-        avatar: "/images/testimonial-jose.webp",
+        avatar: "/avatar3.png",
         content:
           "If I had had this before launching many of my projects, I would have achieved better results while saving a lot of time and resources along the way. Highly recommended for any startup seeking Product-Market Fit or in the growth phase.",
       },
@@ -217,7 +219,7 @@ export const gtmChecklistData: GTMChecklistData = {
         company: "Userpilot",
         handle: "",
         platform: "",
-        avatar: "/images/testimonial-lusine.webp",
+        avatar: "/avatar4.png",
         content:
           "Maja's work is simply incredible, I can't help but admire her dedication to providing value at every turn. Trust me when I say this — with Maja's GTM Strategist and checklist in hand, you practically have all you need to launch a product successfully. Thanks for making our lives easier!",
       },
@@ -227,7 +229,7 @@ export const gtmChecklistData: GTMChecklistData = {
         company: "The Product Coach",
         handle: "",
         platform: "",
-        avatar: "/images/testimonial-jamie.webp",
+        avatar: "/avatar1.png",
         content:
           "I recommend Maja to every single founder and product team that I work with. I would eat her book if it would help me absorb her amazing GTM lessons faster. Using the frameworks & guides in her 100-step checklist gives you the ability to rapidly put her lessons into practice.",
       },
@@ -237,7 +239,7 @@ export const gtmChecklistData: GTMChecklistData = {
         company: "Eleven Ventures",
         handle: "@elenaivanova1",
         platform: "via LinkedIn",
-        avatar: "/images/testimonial-elena.webp",
+        avatar: "/avatar2.png",
         content:
           "Maja's 100-Step Go-To-Market Checklist falls straight into the bucket of must-have tools that we use to complement our internal knowledge and provide founders with a comprehensive (and tailored) plan for growth.",
       },
@@ -247,7 +249,7 @@ export const gtmChecklistData: GTMChecklistData = {
         company: "Sherpa Platform",
         handle: "@felipepolo",
         platform: "via LinkedIn",
-        avatar: "/images/testimonial-felipe.webp",
+        avatar: "/avatar3.png",
         content:
           "I've founded 5 different companies, and I can say the 100-Step GTM Checklist has been really valuable for us as a team. It contains actionable and well-documented items that allowed us to distribute the GTM tasks among our team.",
       },
@@ -365,6 +367,6 @@ export const gtmChecklistData: GTMChecklistData = {
       "Join 9,500+ founders and GTM leaders who use this checklist to launch and scale faster. Get your step-by-step system today.",
     buttonText: "Get Your GTM Checklist Now — $97",
     buttonHref: "#checkout",
-    image: "/images/final-cta-product.png",
+    image: "/gtm.png",
   },
 };

@@ -4,22 +4,28 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { TESTIMONIALS } from "@/lib/data/cohortnew/ai_saas";
+import type { CohortData } from "@/lib/data/cohortnew/index";
 
-export function TestimonialsCarousel() {
+interface TestimonialsCarouselProps {
+  testimonials: CohortData["testimonials"];
+}
+
+export function TestimonialsCarousel({
+  testimonials,
+}: TestimonialsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevSlide = () => {
     setCurrentIndex((prev) =>
-      prev === 0 ? TESTIMONIALS.length - 1 : prev - 1
+      prev === 0 ? testimonials.length - 1 : prev - 1
     );
   };
 
-  const currentTestimonial = TESTIMONIALS[currentIndex];
+  const currentTestimonial = testimonials[currentIndex];
 
   return (
     <section className="relative py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
@@ -71,13 +77,19 @@ export function TestimonialsCarousel() {
                 >
                   <div className="relative mb-6">
                     <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-orange-400 rounded-full blur-xl opacity-50" />
-                    <Image
-                      src={currentTestimonial.avatar}
-                      alt={currentTestimonial.name}
-                      width={120}
-                      height={120}
-                      className="relative w-32 h-32 rounded-full object-cover border-4 border-green-400/50"
-                    />
+                    {currentTestimonial.avatar ? (
+                      <Image
+                        src={currentTestimonial.avatar}
+                        alt={currentTestimonial.name}
+                        width={120}
+                        height={120}
+                        className="relative w-32 h-32 rounded-full object-cover border-4 border-green-400/50"
+                      />
+                    ) : (
+                      <div className="relative w-32 h-32 rounded-full bg-slate-700 border-4 border-green-400/50 flex items-center justify-center text-white text-xl font-semibold">
+                        {currentTestimonial.name?.charAt(0) || "?"}
+                      </div>
+                    )}
                   </div>
 
                   <div className="text-center md:text-left">
@@ -87,21 +99,14 @@ export function TestimonialsCarousel() {
                     <p className="text-green-400 font-semibold mt-1">
                       {currentTestimonial.role}
                     </p>
-                    {currentTestimonial.company && (
-                      <p className="text-white/70 text-sm mt-1">
-                        @ {currentTestimonial.company}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Star Rating */}
-                  <div className="flex gap-1 mt-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
+                    <div className="mt-4 flex items-center justify-center md:justify-start gap-1">
+                      {[...Array(5)].map((_, idx) => (
+                        <Star
+                          key={idx}
+                          className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                        />
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
 
@@ -143,7 +148,7 @@ export function TestimonialsCarousel() {
 
             {/* Dots Indicator */}
             <div className="flex gap-2">
-              {TESTIMONIALS.map((_, idx) => (
+              {testimonials.map((_, idx) => (
                 <motion.button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
@@ -170,7 +175,7 @@ export function TestimonialsCarousel() {
           {/* Counter */}
           <div className="text-center mt-4">
             <p className="text-white/70 text-sm">
-              {currentIndex + 1} of {TESTIMONIALS.length}
+              {currentIndex + 1} of {testimonials.length}
             </p>
           </div>
         </div>

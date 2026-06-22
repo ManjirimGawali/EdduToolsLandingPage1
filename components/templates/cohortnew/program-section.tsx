@@ -1,9 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MODULES } from "@/lib/data/cohortnew/ai_saas";
+import type { ComponentType } from "react";
+import type { CohortData } from '@/lib/data/cohort';
 
-export function ProgramSection() {
+type ProgramModule = CohortData["modules"][number] & {
+  icon: ComponentType<{ className?: string }>;
+};
+
+interface ProgramSectionProps {
+  modules: ProgramModule[];
+}
+export function ProgramSection({ modules }: ProgramSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -55,8 +63,8 @@ export function ProgramSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {MODULES.map((module, idx) => {
-            const IconComponent = module.icon;
+          {modules.map((module, idx) => {
+           
             return (
             <motion.div
               key={idx}
@@ -73,9 +81,9 @@ export function ProgramSection() {
               {/* Content */}
               <div className="relative z-10">
                 {/* Icon */}
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500/20 to-orange-500/20 rounded-lg p-2 mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <IconComponent className="w-full h-full text-green-400" />
-                </div>
+                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-orange-500/20 rounded-lg mb-4 text-2xl group-hover:scale-110 transition-transform duration-300">
+  📚
+</div>
 
                 {/* Title */}
                 <h3 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-green-300 transition-colors duration-300 leading-snug">
