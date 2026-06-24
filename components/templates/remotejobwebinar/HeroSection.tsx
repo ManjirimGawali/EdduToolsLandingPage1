@@ -4,20 +4,24 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
+  Award,
+  Building2,
   Calendar,
-  Users,
+  Globe,
+  GraduationCap,
   Star,
   TrendingUp,
+  Users,
   Clock,
-  Globe,
 } from "lucide-react";
 
 import { CTAButton, SectionBadge, FadeUp } from "@/components/ui";
-import {
-  HERO_STATS,
-  HERO_DATA,
-  MENTOR,
-} from "@/lib/data/data";
+import type {
+  HeroData,
+  Mentor,
+  RemoteJobWebinarData,
+  RemoteJobIconName,
+} from "@/lib/data/remotejob/type";
 
 function FloatingCard({
   children,
@@ -35,7 +39,25 @@ function FloatingCard({
   );
 }
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  heroData: HeroData;
+  mentor: Mentor;
+  heroStats: RemoteJobWebinarData["heroStats"];
+}
+
+const iconMap: Record<RemoteJobIconName, typeof TrendingUp> = {
+  TrendingUp,
+  Users,
+  Award,
+  Building2,
+  GraduationCap,
+};
+
+export default function HeroSection({
+  heroData,
+  mentor,
+  heroStats,
+}: HeroSectionProps) {
   const {
     badge,
     heading,
@@ -45,7 +67,7 @@ export default function HeroSection() {
     trust,
     mentorCard,
     floatingCards,
-  } = HERO_DATA;
+  } = heroData;
 
   return (
     <section className="relative min-h-screen flex items-center pt-10 pb-20 overflow-hidden">
@@ -212,8 +234,8 @@ export default function HeroSection() {
                 {/* Mentor Image */}
                 <div className="w-52 h-72 rounded-2xl overflow-hidden border border-[#1E2D4A] relative mb-4">
                   <Image
-                    src={MENTOR.image}
-                    alt={MENTOR.name}
+                    src={mentor.image}
+                    alt={mentor.name}
                     fill
                     className="object-cover"
                   />
@@ -231,18 +253,18 @@ export default function HeroSection() {
 
                 <div className="text-center">
                   <p className="font-bold text-white text-lg">
-                    {MENTOR.name}
+                    {mentor.name}
                   </p>
 
                   <p className="text-[#8896A6] text-sm">
-                    {MENTOR.designation}
+                    {mentor.designation}
                   </p>
                 </div>
               </div>
 
               {/* Floating cards */}
               {floatingCards.map((card, index) => {
-                const Icon = card.icon;
+                const Icon = iconMap[card.icon] ?? TrendingUp;
 
                 return (
                   <FloatingCard
@@ -303,7 +325,7 @@ export default function HeroSection() {
           }}
           className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4"
         >
-          {HERO_STATS.map((stat) => (
+          {heroStats.map((stat) => (
             <div
               key={stat.label}
               className="bg-[#0F1729] border border-[#1E2D4A] rounded-xl p-5 text-center"

@@ -1,112 +1,13 @@
 //─── Types ────────────────────────────────────────────────────────────────────
-import {
-  Users,
-  TrendingUp,
-  Award,
-  Building2,
-  GraduationCap,
-} from "lucide-react";
-export interface HeroData {
-  badge: string;
-
-  heading: {
-    line1: string;
-    highlight: string;
-    line2: string;
-    underline: string;
-  };
-
-  description: string;
-
-  webinarInfo: {
-    date: string;
-    qa: string;
-    location: string;
-  };
-
-  cta: {
-    text: string;
-    href: string;
-  };
-
-  trust: {
-    clients: string;
-    rating: string;
-    avatars: {
-      initials: string;
-      color: string;
-    }[];
-  };
-
-  mentorCard: {
-    badge: string;
-    multiplier: string;
-  };
-
-  floatingCards: {
-    icon: any;
-    value: string;
-    label: string;
-    color: string;
-  }[];
-}
-export interface Mentor {
-  name: string;
-  designation: string;
-  image: string;
-  headline: string;
-  about: string[];
-  brands: string[];
-  stats: {
-    icon: any;
-    value: string;
-    label: string;
-  }[];
-  achievement: {
-    title: string;
-    description: string;
-    icon: any;
-  };
-  cta: {
-    text: string;
-    href: string;
-  };
-}
-
-export interface SuccessStory {
-  name: string;
-  fromSalary: string;
-  toSalary: string;
-  role: string;
-  company: string;
-  testimonial: string;
-  initials: string;
-  color: string;
-}
-
-export interface PainPoint {
-  icon: string;
-  title: string;
-  highlight: string;
-  description: string;
-}
-
-export interface LearningModule {
-  icon: string;
-  title: string;
-  description: string;
-}
-
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-export interface Challenge {
-  icon: string;
-  title: string;
-  description: string;
-}
+import type {
+  HeroData,
+  Mentor,
+  SuccessStory,
+  PainPoint,
+  LearningModule,
+  FaqItem,
+  Challenge,
+} from "./type";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 export const HERO_DATA: HeroData = {
@@ -164,13 +65,13 @@ export const HERO_DATA: HeroData = {
 
   floatingCards: [
     {
-      icon: TrendingUp,
+      icon: "TrendingUp",
       value: "₹60 LPA",
       label: "Highest Package",
       color: "#FF5A36",
     },
     {
-      icon: Users,
+      icon: "Users",
       value: "25,000+",
       label: "Students Trained",
       color: "#10B981",
@@ -207,29 +108,29 @@ export const MENTOR: Mentor = {
 
   stats: [
     {
-      icon: Users,
+      icon: "Users",
       value: "25,000+",
       label: "Students Helped",
     },
     {
-      icon: TrendingUp,
+      icon: "TrendingUp",
       value: "₹60 LPA",
       label: "Highest Placement",
     },
     {
-      icon: Award,
+      icon: "Award",
       value: "Silver",
       label: "MBA Medalist",
     },
     {
-      icon: Building2,
+      icon: "Building2",
       value: "7+",
       label: "Global Brands",
     },
   ],
 
   achievement: {
-    icon: GraduationCap,
+    icon: "GraduationCap",
     title: "Silver Medalist, MBA",
     description:
       "from IMT Ghaziabad — one of India's top management institutions.",
@@ -435,3 +336,14 @@ export const HERO_STATS = [
   { value: "4.9 / 5", label: "Average Rating" },
   { value: "6 Weeks", label: "Avg. Time to Offer" },
 ];
+export const remoteJobWebinarData = {
+  heroData: HERO_DATA,
+  mentor: MENTOR,
+  successStories: SUCCESS_STORIES,
+  mentorBrands: MENTOR_BRANDS,
+  painPoints: PAIN_POINTS,
+  learningModules: LEARNING_MODULES,
+  challenges: CHALLENGES,
+  faqItems: FAQ_ITEMS,
+  heroStats: HERO_STATS,
+};

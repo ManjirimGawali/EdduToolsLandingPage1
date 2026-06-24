@@ -9,9 +9,15 @@ import {
   staggerItem,
   SectionBadge,
 } from "@/components/ui";
-import { LEARNING_MODULES } from "@/lib/data/data";
+import type { LearningModule } from "@/lib/data/remotejob/type";
 
-export default function WhatYouLearnSection() {
+interface WhatYouLearnSectionProps {
+  learningModules: LearningModule[];
+}
+
+export default function WhatYouLearnSection({
+  learningModules,
+}: WhatYouLearnSectionProps) {
   return (
     <section className="py-24 bg-[#F8FAFC]">
       <div className="max-w-3xl mx-auto px-6">
@@ -30,7 +36,7 @@ export default function WhatYouLearnSection() {
 
         {/* Module list — matches screenshot 5 & 6 vertical card layout */}
         <StaggerContainer className="flex flex-col gap-4" staggerDelay={0.08}>
-          {LEARNING_MODULES.map((mod, i) => (
+          {learningModules.map((mod, i) => (
             <motion.div
               key={i}
               // cast to any to avoid TS variant/ease typing mismatch

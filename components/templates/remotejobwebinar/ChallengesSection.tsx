@@ -2,9 +2,15 @@
 
 import { motion } from "framer-motion";
 import { CTAButton, FadeUp, StaggerContainer, staggerItem, SectionBadge } from "@/components/ui";
-import { CHALLENGES } from "@/lib/data/data";
+import type { Challenge } from "@/lib/data/remotejob/type";
 
-export default function ChallengesSection() {
+interface ChallengesSectionProps {
+  challenges: Challenge[];
+}
+
+export default function ChallengesSection({
+  challenges,
+}: ChallengesSectionProps) {
   return (
     <section className="py-24 bg-[#0B1121]">
       <div className="max-w-3xl mx-auto px-6">
@@ -47,7 +53,7 @@ export default function ChallengesSection() {
 
         {/* Challenge cards */}
         <StaggerContainer className="flex flex-col gap-4 mt-6" staggerDelay={0.1}>
-          {CHALLENGES.map((c) => (
+          {challenges.map((c) => (
             <motion.div
               key={c.title}
               variants={staggerItem as any}

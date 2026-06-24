@@ -1,5 +1,7 @@
-import Remotejobwebinar from "../template/Remotejobwebinar";
+import { redirect } from "next/navigation";
 
-export default function Page() {
-  return <Remotejobwebinar />;
+import { RemoteJobPages } from "@/lib/data/remotejob";
+
+export default function RemoteJobIndexPage() {
+  redirect(`/remotejobwebinar/${RemoteJobPages[0]?.slug ?? ""}`);
 }

@@ -2,8 +2,12 @@
 
 import { TrendingUp, ArrowRight } from "lucide-react";
 import { FadeUp, StaggerContainer, staggerItem, SectionBadge } from "@/components/ui";
-import { SUCCESS_STORIES } from "@/lib/data/data";
+import type { SuccessStory } from "@/lib/data/remotejob/type";
 import { motion } from "framer-motion";
+
+interface ResultsSectionProps {
+  successStories: SuccessStory[];
+}
 
 function SalaryBadge({ from, to }: { from: string; to: string }) {
   return (
@@ -15,7 +19,9 @@ function SalaryBadge({ from, to }: { from: string; to: string }) {
   );
 }
 
-export default function ResultsSection() {
+export default function ResultsSection({
+  successStories,
+}: ResultsSectionProps) {
   return (
     <section className="py-24 bg-[#050810]">
       <div className="max-w-5xl mx-auto px-6">
@@ -35,7 +41,7 @@ export default function ResultsSection() {
           className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5"
           staggerDelay={0.1}
         >
-          {SUCCESS_STORIES.map((story) => (
+          {successStories.map((story) => (
             <motion.div
               key={story.name}
               variants={staggerItem as any}

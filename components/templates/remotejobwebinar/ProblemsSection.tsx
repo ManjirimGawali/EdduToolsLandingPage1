@@ -2,9 +2,15 @@
 
 import { motion } from "framer-motion";
 import { CTAButton, FadeUp, StaggerContainer, staggerItem, SectionBadge } from "@/components/ui";
-import { PAIN_POINTS } from "@/lib/data/data";
+import type { PainPoint } from "@/lib/data/remotejob/type";
 
-export default function ProblemsSection() {
+interface ProblemsSectionProps {
+  painPoints: PainPoint[];
+}
+
+export default function ProblemsSection({
+  painPoints,
+}: ProblemsSectionProps) {
   return (
     <section className="py-24 bg-[#070B1A]">
       <div className="max-w-3xl mx-auto px-6">
@@ -21,7 +27,7 @@ export default function ProblemsSection() {
 
         {/* Pain point list — matches screenshot 4 card-row layout */}
         <StaggerContainer className="flex flex-col gap-3" staggerDelay={0.08}>
-          {PAIN_POINTS.map((point) => (
+          {painPoints.map((point) => (
             <motion.div
               key={point.title}
               // staggerItem has an ease array that isn't compatible with the

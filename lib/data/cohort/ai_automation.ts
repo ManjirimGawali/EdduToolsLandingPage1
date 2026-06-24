@@ -19,7 +19,7 @@ export const aiAutomationData: CohortData = {
     seatsLimited: 25,
   },
   mentor: {
-    name: "Manjiri",
+    name: "Ashish Namdeo",
     title: "AI SaaS Builder & GTM Strategist",
     image: "/teachingprofessional.png",
     gallery: [

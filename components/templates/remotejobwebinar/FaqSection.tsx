@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { CTAButton, FadeUp, SectionBadge } from "@/components/ui";
-import { FAQ_ITEMS } from "@/lib/data/data";
+import type { FaqItem as FaqItemType } from "@/lib/data/remotejob/type";
 
 function FaqItem({
   question,
@@ -67,7 +67,11 @@ function FaqItem({
   );
 }
 
-export default function FaqSection() {
+interface FaqSectionProps {
+  faqItems: FaqItemType[];
+}
+
+export default function FaqSection({ faqItems }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -98,7 +102,7 @@ export default function FaqSection() {
 
         {/* Accordion */}
         <FadeUp delay={0.15} className="flex flex-col gap-3">
-          {FAQ_ITEMS.map((item, i) => (
+          {faqItems.map((item, i) => (
             <FaqItem
               key={i}
               question={item.question}

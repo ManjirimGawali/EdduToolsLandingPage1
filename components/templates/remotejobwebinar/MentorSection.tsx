@@ -1,23 +1,42 @@
 "use client";
 
 import Image from "next/image";
+import {
+  Award,
+  Building2,
+  GraduationCap,
+  TrendingUp,
+  Users,
+} from "lucide-react";
 import { CTAButton, FadeUp, SectionBadge } from "@/components/ui";
-import { MENTOR } from "@/lib/data/data";
-import { MENTOR_BRANDS } from "@/lib/data/data";
-export default function MentorSection() {
+import type { Mentor, RemoteJobIconName } from "@/lib/data/remotejob/type";
+
+const iconMap: Record<RemoteJobIconName, typeof TrendingUp> = {
+  TrendingUp,
+  Users,
+  Award,
+  Building2,
+  GraduationCap,
+};
+
+interface MentorSectionProps {
+  mentor: Mentor;
+  brands: string[];
+}
+
+export default function MentorSection({ mentor, brands }: MentorSectionProps) {
   const {
     name,
     designation,
     image,
     headline,
     about,
-    brands,
     stats,
     achievement,
     cta,
-  } = MENTOR;
+  } = mentor;
 
-  const AchievementIcon = achievement.icon;
+  const AchievementIcon = iconMap[achievement.icon] ?? TrendingUp;
 
   return (
     <section className="py-24 bg-[#050810]">
@@ -107,25 +126,29 @@ export default function MentorSection() {
 
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {stats.map(({ icon: Icon, value, label }) => (
-                <div
-                  key={label}
-                  className="bg-[#0F1729] border border-[#1E2D4A] rounded-xl p-4 text-center"
-                >
-                  <Icon
-                    size={16}
-                    className="text-[#FF5A36] mx-auto mb-2"
-                  />
+              {stats.map(({ icon, value, label }) => {
+                const Icon = iconMap[icon] ?? TrendingUp;
 
-                  <p className="text-white font-extrabold text-base leading-none">
-                    {value}
-                  </p>
+                return (
+                  <div
+                    key={label}
+                    className="bg-[#0F1729] border border-[#1E2D4A] rounded-xl p-4 text-center"
+                  >
+                    <Icon
+                      size={16}
+                      className="text-[#FF5A36] mx-auto mb-2"
+                    />
 
-                  <p className="text-[#4A5568] text-[10px] mt-1.5 uppercase tracking-wide">
-                    {label}
-                  </p>
-                </div>
-              ))}
+                    <p className="text-white font-extrabold text-base leading-none">
+                      {value}
+                    </p>
+
+                    <p className="text-[#4A5568] text-[10px] mt-1.5 uppercase tracking-wide">
+                      {label}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Achievement */}

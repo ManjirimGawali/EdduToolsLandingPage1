@@ -16,9 +16,28 @@ const floatingBadges = [
   'Global Market',
 ];
 
+const badgePositions = [
+  { left: '15%', top: '46%' },
+  { left: '28%', top: '29%' },
+  { left: '41%', top: '55%' },
+  { left: '54%', top: '49%' },
+  { left: '67%', top: '31%' },
+  { left: '80%', top: '35%' },
+];
+
+const badgeAnimations = [
+  { x: [0, 18, 0], y: [0, -10, 0] },
+  { x: [0, -14, 0], y: [0, 12, 0] },
+  { x: [0, 16, 0], y: [0, -14, 0] },
+  { x: [0, -12, 0], y: [0, 18, 0] },
+  { x: [0, 14, 0], y: [0, -12, 0] },
+  { x: [0, -16, 0], y: [0, 14, 0] },
+];
+
 export function HeroShowcase({
-  hero,mentor,
-}:HeroShowcaseProps) {
+  hero,
+  mentor,
+}: HeroShowcaseProps) {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Premium animated background blobs */}
@@ -104,24 +123,20 @@ export function HeroShowcase({
               key={badge}
               className="absolute px-4 py-2 rounded-full bg-white/70 backdrop-blur-md border border-white/60 text-sm font-semibold text-gray-700 shadow-lg"
               initial={{
-                x: Math.random() * 200 - 100,
-                y: Math.random() * 200 - 100,
                 opacity: 0,
+                x: 0,
+                y: 0,
               }}
               animate={{
-                x: Math.random() * 100 - 50,
-                y: Math.sin(Date.now() / 1000 + index) * 30,
-                opacity: 0.7,
+                ...badgeAnimations[index],
+                opacity: [0, 0.7, 0.7],
               }}
               transition={{
-                duration: 3.5 + index * 0.5,
+                duration: 3.5 + index * 0.3,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              style={{
-                left: `${15 + index * 13}%`,
-                top: `${30 + Math.random() * 40}%`,
-              }}
+              style={badgePositions[index]}
             >
               {badge}
             </motion.div>
